@@ -4,5 +4,10 @@ memoria 4096
 
 15 Gb
 
-
 localizar iso ubutu botao direito montar
+
+iniciar maquina
+
+instalar
+
+instalação normal
