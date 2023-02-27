@@ -1,0 +1,6 @@
+novo ubuntu 18.04
+
+memoria 4096
+
+15 Gb
+

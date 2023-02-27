@@ -1,0 +1,37 @@
+{# templates/produtos.html #}
+
+
+
+
+ {% include "inc/head.html" %}
+   
+    <h1>Produtos</h1>
+    <p>Listagem de produtos</p>
+
+   <p>Ultima atualização: {{ "now"|date('d/m/Y H:i:s', 'America/Sao_Paulo') }}</p>
+
+   <table border="1">
+      <tr>
+         <th>Produtos</th>
+         <th>Preço</th>
+      </tr>
+
+      {% for prod in produtos %}
+      <!-- linha para repetir -->
+      <tr>
+         <th>{{ prod.nome }}</th>
+         <th>{{ prod.preco|number_format(2, ',', '.') }}</th>
+      </tr>
+      <!-- linha para repetir -->
+      {% else %}
+      <tr>
+         <td colspan='2'>Nenhum produto</td>
+      </tr>
+
+      {% endfor %}
+
+
+
+   </table>
+
+ {% include "inc/foot.html" %}
