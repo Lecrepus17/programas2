@@ -1,7 +1,14 @@
 /*
 ctrl shift aspas
 
-mysql -u root*/
+variaveis ambiente não sistema
+
+path procurar xampp bin
+
+mysql -h localhost -u root -p
+
+MariaDB [(none)]>  source C:/xampp/htdocs/programas2/teste/desenvolvimento/dump.sql;      
+*/
 
 drop table if exists matriculas;
 drop table if exists disciplinas;
