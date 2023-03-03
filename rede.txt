@@ -21,6 +21,15 @@ programação  clonar repositorio na pasta htdocs
 
 rodar: composer install
 
+ ou composer require
+
 
 
 mesma máquina - git pull
+
+
+
+
+xampp apache config php my admin config
+
+$cfg['Servers'][$i]['AllowNoPassword'] = true;

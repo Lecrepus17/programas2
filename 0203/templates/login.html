@@ -1,6 +1,9 @@
 {# login.html #}
-{% if deu_erro %}
-    Aconteceu um erro!
+{% if erro == 1 %}
+    Usuário ou senha inválido! 😳
+{% elseif erro == 2 %}
+    Voce está tentando acessar uma página restrita,
+    safadinho! 😳
 {% endif %}
 <form action="login_verifica.php" method="POST">
     <div>
