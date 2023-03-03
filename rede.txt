@@ -11,3 +11,16 @@ iniciar maquina
 instalar
 
 instalação normal
+
+
+
+
+pasta diferente
+
+programação  clonar repositorio na pasta htdocs
+
+rodar: composer install
+
+
+
+mesma máquina - git pull
