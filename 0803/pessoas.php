@@ -9,9 +9,10 @@ try {
 
    
     $mysqli->query("INSERT INTO `pessoas` (id, nome) values (10,'lucas')");
-    $mysqli->commit();
 
-        throw new Exception('Erro 1');       
+
+    throw new Exception('Erro 1');
+    $mysqli->commit();       
 
 
 } catch (Exception $e) {
