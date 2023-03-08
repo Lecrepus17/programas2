@@ -9,7 +9,7 @@ $id =  $_GET['indice'];
 function deleteJogador($id)
 {
     try {
-        $mysqli = new mysqli("localhost", "id19323740_root", "89B}7MqH0K$=NVfy", "id19323740_ferias");
+        $mysqli = new mysqli("localhost", "", "", "ferias");
         $mysqli->set_charset("utf8");
 
         $sql = "DELETE FROM locais WHERE id = $id";

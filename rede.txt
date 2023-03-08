@@ -33,3 +33,30 @@ mesma máquina - git pull
 xampp apache config php my admin config
 
 $cfg['Servers'][$i]['AllowNoPassword'] = true;
+
+
+
+
+
+
+
+
+
+
+ctrl shift aspas
+
+variaveis ambiente não sistema
+
+path procurar xampp mysql bin
+
+mysql -h localhost -u root -p
+
+MariaDB [(none)]>  source C:/xampp/htdocs/programas2/teste/desenvolvimento/dump.sql;    
+
+
+
+inicia algo sem realmente fazer
+start transaction;
+
+commit; realiza tudo que fez
+rollback; desfaz tudo que fez

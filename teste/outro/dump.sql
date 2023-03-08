@@ -3,11 +3,12 @@ ctrl shift aspas
 
 variaveis ambiente não sistema
 
-path procurar xampp bin
+path procurar xampp mysql bin
 
 mysql -h localhost -u root -p
 
 MariaDB [(none)]>  source C:/xampp/htdocs/programas2/teste/desenvolvimento/dump.sql;      
+
 */
 
 drop table if exists matriculas;
