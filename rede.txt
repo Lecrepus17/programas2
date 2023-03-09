@@ -57,6 +57,16 @@ $cfg['Servers'][$i]['AllowNoPassword'] = true;
 
 
 
+    
+/////////////////////////////////nomeia
+    //cria a consulta e aquarda os dados
+    $sql = $conex->prepare('select * from usuarios where username = :usr and senha = :pass');
+
+
+    //adiciona os dados na consulta
+    $sql->bindParam(':usr', $user);
+    $sql->bindParam(':pass', $pass);
+
 
 
 
