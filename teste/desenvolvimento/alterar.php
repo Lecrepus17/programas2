@@ -11,7 +11,7 @@ $img = $_FILES['imagem'];
     function alteraano_inicio($nome, $ano_inicio,  $ano_fim, $preco, $descricao, $imagem, $id){
         try {
             $mysqli->begin_transaction();
-            $mysqli = new mysqli("localhost", "root", "", "ferias");
+            $mysqli = new mysqli("localhost", "root", "", "banco");
 
                 $sql = "UPDATE locais SET 
                 nome = '$nome', 

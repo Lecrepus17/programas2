@@ -13,7 +13,7 @@ function InsereJogador($nome, $ano_inicio,  $ano_fim, $preco, $descricao, $image
     try {
         $mysqli->begin_transaction();
 
-        $mysqli = new mysqli("localhost", "root", "", "ferias");
+        $mysqli = new mysqli("localhost", "root", "", "banco");
         $mysqli->set_charset("utf8");
         //Realiza o INSERT DOS JOGADORES
                 $sql = "INSERT INTO `locais` (`nome`, `imagem`, `data_inicio`, `data_fim`, `descricao`, `preco`) VALUES
