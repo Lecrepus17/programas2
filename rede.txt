@@ -101,13 +101,7 @@ rollback; desfaz tudo que fez
 
 
 
-
-teste
-
-
-
-
-
+dry
 
 
 
@@ -139,4 +133,12 @@ TCP/IP são os dois protocolos mais importantes da internet
 
 ip especifica o formato de pacotes que são enviados e recebidos entre roteadores e sistemas finais
 
-fddd
+
+
+
+camadas
+
+comunica uma máquina com outra máquina, um cliente com servidor
+           \/
+aplicaçã>transporte    >      rede>enlace>física
+http smtp pcp (numero de porta) ip   wifi
