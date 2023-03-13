@@ -6,29 +6,30 @@ $img = $_FILES['imagem'];
     
     move_uploaded_file($img['tmp_name'], $diretorio . $img['name']);
 
-
+    require('pdo.inc.php');
 
 function InsereJogador($nome, $ano_inicio,  $ano_fim, $preco, $descricao, $imagem)
 {
     try {
-        $mysqli->begin_transaction();
 
-        $mysqli = new mysqli("localhost", "root", "", "banco");
-        $mysqli->set_charset("utf8");
+
         //Realiza o INSERT DOS JOGADORES
-                $sql = "INSERT INTO `locais` (`nome`, `imagem`, `data_inicio`, `data_fim`, `descricao`, `preco`) VALUES
-                ('$nome', '$imagem', '$ano_inicio',  '$ano_fim', '$descricao', $preco)";
+        $sql = $conex->prepare("INSERT INTO locais (nome, imagem, data_inicio, data_fim, descricao, preco) VALUES
+                (:nome, :imagem, :ano_inicio,  :ano_fim, :descricao, :preco)");
 
-        $resultado = $mysqli->query($sql);
-        if ($resultado === true) {
-        }
+        $sql->bindParam(':nome', $nome);
+        $sql->bindParam(':email', $email);
+        $sql->bindParam(':user', $user);
+        $sql->bindParam(':pass', $pass);
+        $sql->bindParam(':admin', $admin);
+      
 
-        $mysqli->commit();       
+        $sql->execute();
+
+        header('location:login.php');
 
 
-
-
-        $mysqli->close();
+    
     } catch (Exception $e) {
             $mysqli->rollback();
 
@@ -43,3 +44,31 @@ InsereJogador( $_POST['nome'], $_POST['data_inicio'], $_POST['data_fim'], $_POST
 
     ?>
 
+
+
+<?php
+    require('pdo.inc.php');
+    $nome = $_POST['nome'] ?? false;
+    $email = $_POST['email'] ?? false;
+    $user = $_POST['user'] ?? false;
+    $pass = $_POST['pass'] ?? false;
+    $admin = $_POST['admin'] ?? false;
+
+    if(!$user or !$pass){
+        header('location:novo_usuario.php');
+        die;
+    }
+
+    $pass = password_hash($pass, PASSWORD_BCRYPT);
+
+    $sql = $conex->prepare('INSERT INTO usuarios (nome, email, username, senha, admin, ativo) VALUES (:nome, :email, :user, :pass, :admin, 1)');
+
+    $sql->bindParam(':nome', $nome);
+    $sql->bindParam(':email', $email);
+    $sql->bindParam(':user', $user);
+    $sql->bindParam(':pass', $pass);
+    $sql->bindParam(':admin', $admin);
+
+    $sql->execute();
+
+    header('location:login.php');

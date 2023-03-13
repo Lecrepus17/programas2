@@ -97,3 +97,49 @@ start transaction;
 
 commit; realiza tudo que fez
 rollback; desfaz tudo que fez
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------------
+
+sandro
+
+enlace
+
+taxa de transmissão em bits por segundo
+
+comutador de pacote: um comutador emcaminha o pacote que chega de um enlace e manda pra outro
+
+pacote: separa o conteudo para enviar vários pedaços
+
+comutadores de camada de enlace são tipicamente utilizados em rede de acesso, enquanto roteadores são utilizados
+
+rota ou caminho: caminho enlaces switches
+
+ISPs provedores de serviço de internet, empresas de tv a cabo, telefonia
+
+8 8 8 8
+43 6
+43 364
+
+Protocolo: protocolos que controlam o envio e o recebimento de informações
+
+TCP/IP são os dois protocolos mais importantes da internet
+
+ip especifica o formato de pacotes que são enviados e recebidos entre roteadores e sistemas finais
+
+fddd
