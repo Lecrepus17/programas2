@@ -1,3 +1,3 @@
 <?php
-    $conex = new PDO('mysql:host=localhost;dbname=sistematwig', 'root', '');
+    $PDO = new PDO('mysql:host=localhost;dbname=banco', 'root', '');
 

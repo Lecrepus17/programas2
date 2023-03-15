@@ -51,7 +51,7 @@ console.log(mostraNome2(pessoa))
 
 
 
-
+/*
 // repetição
 const numeros = [1,2,3,4,5]
 //while
@@ -71,3 +71,12 @@ for (let n in numeros){
 for (let n of numeros){
     console.log(n)
 }
+*/
+
+// map, filter, reduce, find   
+
+//  includes, forEach, every, some  
+
+// findLast, findIndex
+
+

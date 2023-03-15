@@ -1,26 +1,23 @@
 <?php
-/*
+
 $img = $_FILES['imagem'];
-    $extensao = strtolower(substr($img['name'], -4));
     $diretorio = 'assets/imagem/';
-    
     move_uploaded_file($img['tmp_name'], $diretorio . $img['name']);
-*/
 
-require('pdo.inc.php');
 
+
+/*
 //Realiza o INSERT DOS niveis de ensino
-function Insere_nivel_ensino($nome)
+function Insere_nivel($nome_nivel)
 {
     try {
         $sql = $conex->prepare("INSERT INTO nivel_ensino (nome) VALUES
                 (:nome)");
 
-        $sql->bindParam(':nome', $nome);
+        $sql->bindParam(':nome', $nome_nivel);
 
         $sql->execute();
 
-        header('location:login.php');
 
     } catch (Exception $e) {
             $mysqli->rollback();
@@ -28,23 +25,22 @@ function Insere_nivel_ensino($nome)
         exit("Erro no banco de dados: " . $e->getMessage());
     }
 }
-Insere_nivel_ensino( $_POST['nome_nivel_ensino']);
+Insere_nivel( $_POST['nome_nivel']);
 
 
     //----------------------------------------------------------------------------------
 //Realiza o INSERT DOS cursos
-function Insere_curso($nome, $nivel_ensino)
+function Insere_curso($nome_curso, $nivel_ensino)
 {
     try {
-        $sql = $conex->prepare("INSERT INTO nivel_ensino (nome, nivel_ensino_idNivel_ensino) VALUES
+        $sql = $conex->prepare("INSERT INTO cursos (nome, nivel_ensino_idNivel_ensino) VALUES
                 (:nome, :nivel)");
 
-        $sql->bindParam(':nome', $nome);
+        $sql->bindParam(':nome', $nome_curso);
         $sql->bindParam(':nivel', $nivel_ensino);
 
         $sql->execute();
 
-        header('location:login.php');
 
     } catch (Exception $e) {
             $mysqli->rollback();
@@ -55,19 +51,18 @@ function Insere_curso($nome, $nivel_ensino)
 
 Insere_curso( $_POST['nome_curso'], $_POST['nivel_ensino']);
     //----------------------------------------------------------------------------------
-//Realiza o INSERT DOS cursos
-function Insere_cuurso($nome, $nivel_ensino)
+//Realiza o INSERT Das turmas
+function Insere_turma($nome_turma, $idcurso)
 {
     try {
-        $sql = $conex->prepare("INSERT INTO nivel_ensino (nome, nivel_ensino_idNivel_ensino) VALUES
+        $sql = $conex->prepare("INSERT INTO turmas (nome, cursos_idcursos) VALUES
                 (:nome, :nivel)");
 
-        $sql->bindParam(':nome', $nome);
-        $sql->bindParam(':nivel', $nivel_ensino);
+        $sql->bindParam(':nome', $nome_turma);
+        $sql->bindParam(':nivel', $idcurso);
 
         $sql->execute();
 
-        header('location:login.php');
 
     } catch (Exception $e) {
             $mysqli->rollback();
@@ -76,24 +71,23 @@ function Insere_cuurso($nome, $nivel_ensino)
     }
 }
 
-Insere_curso( $_POST['nome_curso']);
+Insere_turma($_POST['nome_turma'], $_POST['idcurso']);
     //----------------------------------------------------------------------------------
-
-
-function InsereAluno($nome, $ano_inicio,  $ano_fim, $preco, $descricao, $imagem)
+    */
+//insere aluno
+function Insere_aluno($nome_aluno, $data_nasc,  $foto, $idturma)
 {
     try {
-
+        require('pdo.inc.php');
 
         //Realiza o INSERT DOS JOGADORES
-        $sql = $conex->prepare("INSERT INTO locais (nome, imagem, data_inicio, data_fim, descricao, preco) VALUES
-                (:nome, :imagem, :ano_inicio,  :ano_fim, :descricao, :preco)");
+        $sql = $PDO->prepare("INSERT INTO alunos (nome_aluno, data_nasc, foto, turmas_idturmas) VALUES
+                (:nome, :nasc, :foto,  :idturma)");
 
-        $sql->bindParam(':nome', $nome);
-        $sql->bindParam(':email', $email);
-        $sql->bindParam(':user', $user);
-        $sql->bindParam(':pass', $pass);
-        $sql->bindParam(':admin', $admin);
+        $sql->bindParam(':nome', $nome_aluno);
+        $sql->bindParam(':nasc', $data_nasc);
+        $sql->bindParam(':foto', $foto);
+        $sql->bindParam(':idturma', $idturma);
       
 
         $sql->execute();
@@ -103,22 +97,21 @@ function InsereAluno($nome, $ano_inicio,  $ano_fim, $preco, $descricao, $imagem)
 
     
     } catch (Exception $e) {
-            $mysqli->rollback();
-
+            
         exit("Erro no banco de dados: " . $e->getMessage());
     }
 }
 
-InsereJogador( $_POST['nome'], $_POST['data_inicio'], $_POST['data_fim'], $_POST['preco'], $_POST['descricao'], $diretorio.$img['name']);
+Insere_aluno( $_POST['nome'], $_POST['data_nasc'], $diretorio.$img['name'], $_POST['idturma']);
     // Redireciona para a página inicial
     header('Location: index.php');
 
 
-    ?>
+    
 
 
+/*
 
-<?php
     require('pdo.inc.php');
     $nome = $_POST['nome'] ?? false;
     $email = $_POST['email'] ?? false;
@@ -143,4 +136,4 @@ InsereJogador( $_POST['nome'], $_POST['data_inicio'], $_POST['data_fim'], $_POST
 
     $sql->execute();
 
-    header('location:login.php');
+    header('location:login.php');*/

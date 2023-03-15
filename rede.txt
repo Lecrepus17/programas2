@@ -184,6 +184,14 @@ console.log(matricula, notas)
 const notas2 = [...notas]
 
 
+const mostraNome = p => p.nome + " " + p.sobrenome
+console.log(mostraNome(pessoa))
+//mesma coisa de cima
+const mostraNome2 = ({nome, sobrenome}) => `${nome} ${sobrenome}`
+console.log(mostraNome2(pessoa))
+
+
+
 
 
 
