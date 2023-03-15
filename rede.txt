@@ -73,6 +73,39 @@ $cfg['Servers'][$i]['AllowNoPassword'] = true;
 
 --------------------------------------------------------------------------------------------
 
+node js
+/ctrl shift aspas
+/cd pasta que tá
+
+npm init -y
+/baixa package.json
+
+node (nome do arquivo)"index.js"
+
+console.log('frase') /serve para escrever no terminal
+
+package.json
+  "scripts": {
+    "dev": "node index.js"
+  },
+/terminal
+npm run dev
+/botando nodemon
+package.json
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+/roda sempre que atualiza
+
+
+/instala package-lock.json e node_modules modo de desenvolvimento, não de produção
+npm install nodemon -D
+
+/instala package-lock.json e node_modules modo de produção
+npm install nodemon --prod
+
+/receber de alguem
+npm install
 
 
 
@@ -80,9 +113,88 @@ $cfg['Servers'][$i]['AllowNoPassword'] = true;
 
 
 
-ctrl shift aspas
 
-variaveis ambiente não sistema
+/let dura apenas dentro ou fora / muda
+/const constante não pode mudar, não pode ser um array e depois adicionar outro array
+
+let = nome = "Pedro"
+
+if (true){
+    let nome = "Sperotto"
+    escreveria Sperotto
+}
+for (let i =0; i <10; i++){
+    console.log(i)
+    i nao existe no resto
+}
+
+console.log(nome) escreve pedro
+
+
+
+//vetores
+const vetor = [1,2,3,4,5]
+//const a = vetor[0]
+//const b = vetor[1]
+//const c = vetor[2]
+//const d = vetor[3]
+//const e = vetor[4]
+//mesma coisa do de cima, só mais rápido
+const [a,b,c,d,e] = vetor
+//objetos
+const pessoa = {nome: 'Pedro', sobrenome: 'Sperotto'}
+
+//const nome = pessoa.nome
+//const sobrenome = pessoa.sobrenome
+//mesma coisa do de cima, só mais rápido 
+const {sobrenome:ultimo, nome} = pessoa
+//( : para renomear variavel )
+
+
+
+//funções
+function soma (a, b) {
+    return a + b;
+}
+//arrow function
+const soma1 = (a, b) => {
+    return a + b;
+}
+//mesma coisa de cima
+const soma2 = (a,b) => a+b;
+//cria e ja executa função
+console.log(((a,b) => a+b)(3,5))
+
+
+const n = "Pedro"
+const s = "Sperotto"
+const nomeCompleto = `${n} ${4+8} ${s}`
+console.log(nomeCompleto)
+
+
+
+// Operador...     ...só no final, pega tudo que sobrar
+const alunos = [1234, 7.0, 8.0, 9.0]
+
+const [matricula, ...notas] = alunos
+
+console.log(matricula, notas)
+
+// coloca as informações de notas para notas2, sem os a mais não funciona
+const notas2 = [...notas]
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------
+
+---mysql
+
+/ctrl shift aspas
+
+/variaveis ambiente não sistema
 
 path procurar xampp mysql bin
 

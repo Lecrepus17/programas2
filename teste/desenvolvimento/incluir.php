@@ -1,14 +1,86 @@
 <?php
-
+/*
 $img = $_FILES['imagem'];
     $extensao = strtolower(substr($img['name'], -4));
     $diretorio = 'assets/imagem/';
     
     move_uploaded_file($img['tmp_name'], $diretorio . $img['name']);
+*/
 
-    require('pdo.inc.php');
+require('pdo.inc.php');
 
-function InsereJogador($nome, $ano_inicio,  $ano_fim, $preco, $descricao, $imagem)
+//Realiza o INSERT DOS niveis de ensino
+function Insere_nivel_ensino($nome)
+{
+    try {
+        $sql = $conex->prepare("INSERT INTO nivel_ensino (nome) VALUES
+                (:nome)");
+
+        $sql->bindParam(':nome', $nome);
+
+        $sql->execute();
+
+        header('location:login.php');
+
+    } catch (Exception $e) {
+            $mysqli->rollback();
+
+        exit("Erro no banco de dados: " . $e->getMessage());
+    }
+}
+Insere_nivel_ensino( $_POST['nome_nivel_ensino']);
+
+
+    //----------------------------------------------------------------------------------
+//Realiza o INSERT DOS cursos
+function Insere_curso($nome, $nivel_ensino)
+{
+    try {
+        $sql = $conex->prepare("INSERT INTO nivel_ensino (nome, nivel_ensino_idNivel_ensino) VALUES
+                (:nome, :nivel)");
+
+        $sql->bindParam(':nome', $nome);
+        $sql->bindParam(':nivel', $nivel_ensino);
+
+        $sql->execute();
+
+        header('location:login.php');
+
+    } catch (Exception $e) {
+            $mysqli->rollback();
+
+        exit("Erro no banco de dados: " . $e->getMessage());
+    }
+}
+
+Insere_curso( $_POST['nome_curso'], $_POST['nivel_ensino']);
+    //----------------------------------------------------------------------------------
+//Realiza o INSERT DOS cursos
+function Insere_cuurso($nome, $nivel_ensino)
+{
+    try {
+        $sql = $conex->prepare("INSERT INTO nivel_ensino (nome, nivel_ensino_idNivel_ensino) VALUES
+                (:nome, :nivel)");
+
+        $sql->bindParam(':nome', $nome);
+        $sql->bindParam(':nivel', $nivel_ensino);
+
+        $sql->execute();
+
+        header('location:login.php');
+
+    } catch (Exception $e) {
+            $mysqli->rollback();
+
+        exit("Erro no banco de dados: " . $e->getMessage());
+    }
+}
+
+Insere_curso( $_POST['nome_curso']);
+    //----------------------------------------------------------------------------------
+
+
+function InsereAluno($nome, $ano_inicio,  $ano_fim, $preco, $descricao, $imagem)
 {
     try {
 
