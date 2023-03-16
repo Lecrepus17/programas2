@@ -260,3 +260,9 @@ comunica uma máquina com outra máquina, um cliente com servidor
            \/
 aplicaçã>transporte    >      rede>enlace>física
 http smtp pcp (numero de porta) ip   wifi
+
+-----------------------------------------------------------------------------
+
+
+abrir terminal baixar twing
+composer install
