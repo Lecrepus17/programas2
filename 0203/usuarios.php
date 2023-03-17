@@ -5,12 +5,11 @@
 
  try {
       
-    $sql = $conex->query("SELECT * FROM  usuarios");
+    $sql = $conex->query("SELECT * FROM  usuarios WHERE ativo = 1");
         $usuarios = $sql->fetchAll(PDO::FETCH_ASSOC);
 
     } catch (Exception $e) {
-            $mysqli->rollback();
-
+ 
         exit("Erro no banco de dados: " . $e->getMessage());
     }
 
