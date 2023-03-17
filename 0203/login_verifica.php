@@ -6,7 +6,7 @@
     $pass = $_POST['pass'];
 
     //cria a consulta e aquarda os dados
-    $sql = $conex->prepare('select * from usuarios where username = :usr');
+    $sql = $conex->prepare('SELECT * from usuarios where username = :usr AND ativo = 1');
 
 
     //adiciona os dados na consulta
