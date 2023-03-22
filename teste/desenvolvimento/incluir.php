@@ -6,7 +6,7 @@ $img = $_FILES['imagem'];
 
 
 
-/*
+
 //Realiza o INSERT DOS niveis de ensino
 function Insere_nivel($nome_nivel)
 {
@@ -25,8 +25,6 @@ function Insere_nivel($nome_nivel)
         exit("Erro no banco de dados: " . $e->getMessage());
     }
 }
-Insere_nivel( $_POST['nome_nivel']);
-
 
     //----------------------------------------------------------------------------------
 //Realiza o INSERT DOS cursos
@@ -49,7 +47,6 @@ function Insere_curso($nome_curso, $nivel_ensino)
     }
 }
 
-Insere_curso( $_POST['nome_curso'], $_POST['nivel_ensino']);
     //----------------------------------------------------------------------------------
 //Realiza o INSERT Das turmas
 function Insere_turma($nome_turma, $idcurso)
@@ -71,9 +68,8 @@ function Insere_turma($nome_turma, $idcurso)
     }
 }
 
-Insere_turma($_POST['nome_turma'], $_POST['idcurso']);
     //----------------------------------------------------------------------------------
-    */
+  
 //insere aluno
 function Insere_aluno($nome_aluno, $data_nasc,  $foto, $idturma)
 {
@@ -102,38 +98,31 @@ function Insere_aluno($nome_aluno, $data_nasc,  $foto, $idturma)
     }
 }
 
-Insere_aluno( $_POST['nome'], $_POST['data_nasc'], $diretorio.$img['name'], $_POST['idturma']);
-    // Redireciona para a página inicial
-    header('Location: index.php');
+
 
 
     
 
-
-/*
-
-    require('pdo.inc.php');
-    $nome = $_POST['nome'] ?? false;
-    $email = $_POST['email'] ?? false;
-    $user = $_POST['user'] ?? false;
-    $pass = $_POST['pass'] ?? false;
-    $admin = $_POST['admin'] ?? false;
-
-    if(!$user or !$pass){
-        header('location:novo_usuario.php');
-        die;
-    }
-
-    $pass = password_hash($pass, PASSWORD_BCRYPT);
-
-    $sql = $conex->prepare('INSERT INTO usuarios (nome, email, username, senha, admin, ativo) VALUES (:nome, :email, :user, :pass, :admin, 1)');
-
-    $sql->bindParam(':nome', $nome);
-    $sql->bindParam(':email', $email);
-    $sql->bindParam(':user', $user);
-    $sql->bindParam(':pass', $pass);
-    $sql->bindParam(':admin', $admin);
-
-    $sql->execute();
-
-    header('location:login.php');*/
+if ($_POST['tipo'] == 'aluno'){
+    Insere_aluno( $_POST['nome'], $_POST['data_nasc'], $diretorio.$img['name'], $_POST['idturma']);
+    // Redireciona para a página inicial
+    header('Location: index.php');
+    die;
+}elseif($_POST['tipo'] == 'turma'){
+    Insere_turma($_POST['nome_turma'], $_POST['idcurso']);
+     // Redireciona para a página inicial
+    header('Location: index.php');
+    die;
+}
+elseif($_POST['tipo'] == 'curso'){
+    Insere_curso( $_POST['nome_curso'], $_POST['nivel_ensino']);
+    // Redireciona para a página inicial
+    header('Location: index.php');
+    die;
+}
+elseif($_POST['tipo'] == 'nivel'){
+    Insere_nivel( $_POST['nome_nivel']);
+    // Redireciona para a página inicial
+    header('Location: index.php');
+    die;
+};
