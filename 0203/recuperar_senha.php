@@ -1,7 +1,6 @@
 <?php
     require('twig_carregar.php');
     require('pdo.inc.php');
-    require('mailer.inc.php');
     
 
     $msg = '';
@@ -25,6 +24,11 @@
                 ':id_usr' => $usuario['idusuarios'],
             ]);
             $msg = "Vai lá olhar o teu e-mail";
+            echo $twig->render('email_recupera_senha.html',[
+                'token' => $token
+            ]);
+            die;
+
         } else {
             $msg = 'Usuário não encontrado, Tu bebeu?';
         }

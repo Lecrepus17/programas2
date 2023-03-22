@@ -266,3 +266,10 @@ http smtp pcp (numero de porta) ip   wifi
 
 abrir terminal baixar twing
 composer install
+
+-----------------------------------------------------------------------------
+
+email
+
+
+composer require phpmailer/phpmailer
