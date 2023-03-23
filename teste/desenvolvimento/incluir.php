@@ -1,8 +1,15 @@
 <?php
 
-$img = $_FILES['imagem'];
+if(!isset($_POST['tipo'])){
+    header("Location: index.php");
+}
+
+
+if(isset($_FILES['imagem'])){
+    $img = $_FILES['imagem'];
     $diretorio = 'assets/imagem/';
     move_uploaded_file($img['tmp_name'], $diretorio . $img['name']);
+}
 
 
 

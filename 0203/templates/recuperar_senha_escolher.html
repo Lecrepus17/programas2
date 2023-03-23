@@ -2,8 +2,12 @@
     <div>
         digita a senha nova aí. e não vai errar
     </div>
+    <input type="hidden" name="token" value="{{ token }}">
     <div>
-        <input type="password" name="senha">
+        <input type="password" name="senha" id="senha">
+        <input type="button" id="olho" value="👀">
     </div>
     <input type="submit" value="gravar">
 </form>
+
+<script src="js/olho.js"></script>
