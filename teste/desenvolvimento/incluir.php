@@ -1,8 +1,6 @@
 <?php
 
-if(!isset($_POST['tipo'])){
-    header("Location: index.php");
-}
+
 
 
 if(isset($_FILES['imagem'])){
@@ -106,28 +104,31 @@ function Insere_aluno($nome_aluno, $data_nasc,  $foto, $idturma)
 }
 
 
+$tipo = $_POST['tipo'] ?? false;
 
-
+if(!isset($tipo)){
+    header("Location: index.php");
+}
     
 
-if ($_POST['tipo'] == 'aluno'){
+if ($tipo == 'aluno'){
     Insere_aluno( $_POST['nome'], $_POST['data_nasc'], $diretorio.$img['name'], $_POST['idturma']);
     // Redireciona para a página inicial
     header('Location: index.php');
     die;
-}elseif($_POST['tipo'] == 'turma'){
+}elseif($tipo == 'turma'){
     Insere_turma($_POST['nome_turma'], $_POST['idcurso']);
      // Redireciona para a página inicial
     header('Location: index.php');
     die;
 }
-elseif($_POST['tipo'] == 'curso'){
+elseif($tipo == 'curso'){
     Insere_curso( $_POST['nome_curso'], $_POST['nivel_ensino']);
     // Redireciona para a página inicial
     header('Location: index.php');
     die;
 }
-elseif($_POST['tipo'] == 'nivel'){
+elseif($tipo == 'nivel'){
     Insere_nivel( $_POST['nome_nivel']);
     // Redireciona para a página inicial
     header('Location: index.php');
