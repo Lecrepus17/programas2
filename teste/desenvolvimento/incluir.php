@@ -1,12 +1,15 @@
 <?php
 
-
+require('func/sanitize_filename.php');
 
 
 if(isset($_FILES['imagem'])){
+
+    $arquivo = sanitize_filename($_FILES['arquivo']['name']);
+
     $img = $_FILES['imagem'];
     $diretorio = 'assets/imagem/';
-    move_uploaded_file($img['tmp_name'], $diretorio . $img['name']);
+    move_uploaded_file($img['tmp_name'], $diretorio . $arquivo);
 }
 
 

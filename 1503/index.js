@@ -74,9 +74,118 @@ for (let n of numeros){
 */
 
 // map, filter, reduce, find   
+//------------------------------------------------------------------------------------------------------------------------------------------
+const numeros = [1,2,8,4,5]
+//------------------------------------------------------------------------------------------------------------------------------------------
+const soma123 = numeros.reduce(function(resposta, atual){
+//atual 1
+//resposta 0
+return atual + resposta
 
-//  includes, forEach, every, some  
+}, 0)
+console.log('soma: ',soma123)
 
+const soma65 = numeros.reduce((p,a)=>p+a,0)
+console.log('soma: ',soma65)
+
+const vetorDeObjetos = numeros.map(n=>({n}))
+console.log(vetorDeObjetos)
+const vetorDeObjetos2 = numeros.reduce((p, n)=>[...p, {n}],[])
+console.log(vetorDeObjetos2)
+//------------------------------------------------------------------------------------------------------------------------------------------
+const somentePares2 = numeros.map(v => v * 2)
+console.log(somentePares2)
+//------------------------------------------------------------------------------------------------------------------------------------------
+const num = numeros.find(function(v){
+    if(v % 2 == 0 ){
+        return true
+    }else {
+        return false
+    }
+})
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+// retornar o ´rimeiro encontrado, return verdadeiro ou falso apenas
+const nume = numeros.find(v =>v%2 ==0)
+
+console.log('número: ',nume)
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+//retorna todos pares
+const todosPares = numeros.filter(v=>v%2===0)
+console.log('número: ',todosPares)
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+//  includes, forEach, every (E), some (OU)  
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+//verifica se tem um valor no vetor
+if(numeros.includes(2)){
+    console.log('O vetor números tem o valor dois')
+}else{
+    console.log('O vetor números não tem o valor dois')
+}
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+// verificar se agum numero é par
+const existePar = numeros.some(function(v){
+    if(v % 2 === 0 ){
+        return true
+    }else {
+        return false
+    }
+})
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+//verifica se os numeros estão em ordem crescente
+const numerosOrdem = numeros.every(function(v,i,k){
+    if(i===0 || v >= k[i-1]){
+        k = v
+        return true
+    }else {
+        return false
+    }
+})
+console.log('ordem: ',numerosOrdem)
+//------------------------------------------------------------------------------------------------------------------------------------------
+//não retorna nada
+let soma12 = 0
+numeros.forEach(function(v,i,k){
+    console.log(v)
+    soma12 += v
+})
+console.log(soma12)
+
+const somentePares = []
+numeros.forEach(v=> somentePares.push(v*2))
+console.log(somentePares)
+//------------------------------------------------------------------------------------------------------------------------------------------
+const numerosEmOrdem = numeros.every((v,i,k)=>i===0 || v >= k[i-1])
+console.log('ordem: ',numerosEmOrdem)
+//------------------------------------------------------------------------------------------------------------------------------------------
 // findLast, findIndex
 
+const pos = numeros.findIndex(v =>v%2 ==0)
 
+// retorna posição
+console.log('número: ',pos)
+
+// mostra o ultimo
+const ultimoNPar = numeros.findLast(v =>v%2 ==0)
+
+console.log('número: ',ultimoNPar)
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+const dias = ['DOMINGO', 'SEGUNDA', 'TERCA', 'QUARTA', 'QUINTA', 'SEXTA', 'SABADO']
+const periodos = [
+    {inicio: '08:00', termino: '12:00', dias: ['SABADO', 'DOMINGO']},
+    {inicio: '17:00', termino: '20:00', dias: ['SABADO', 'SEXTA']}
+]
+
+const periodosPorDia = dias.map(dia => {
+    const periodosDoDia = periodos.filter(periodo => periodo.dias.includes(dia));
+    return { dia, periodos: periodosDoDia };
+    
+  });
+  
+  console.log(periodosPorDia);
