@@ -2,16 +2,10 @@
     require('verificalogin.php');
     require('twig_carregar.php');
     require('pdo.inc.php');
-
- try {
-      
-    $sql = $conex->query("SELECT * FROM  usuarios WHERE ativo = 1");
-        $usuarios = $sql->fetchAll(PDO::FETCH_ASSOC);
-
-    } catch (Exception $e) {
+    require('models/Model.php');
+    require('models/Usuario.php');
  
-        exit("Erro no banco de dados: " . $e->getMessage());
-    }
+    $usr = new Usuario();
 
 
     echo $twig->render('usuarios.html', [
