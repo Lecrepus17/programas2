@@ -16,7 +16,7 @@
   <tbody>
   {% for usr in user %}
     <tr>
-      <td>{{ usr.username }}</td>
+      <td><a href="Usuario_ver.php?id={{usr.idusuarios}}">{{ usr.username }}</a></td>
       <td>{{ usr.admin }}</td>
       <td>{{ usr.ativo }}</td>
       <td><a href="usuario_apagar.php?id={{ usr.idusuarios }}">apagar</a></td>

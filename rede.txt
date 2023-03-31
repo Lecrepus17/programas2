@@ -71,6 +71,13 @@ $cfg['Servers'][$i]['AllowNoPassword'] = true;
 
 
 
+///////// query()
+executa a consulta direito
+
+//////// prepare()
+aquarda os binds e só é executado depois do
+//////// execute()
+
 
 --------------------------------------------------------------------------------------------
 

@@ -18,6 +18,17 @@ class Model{
         $this->conex = new PDO("{$this->driver}:host={$this->host};port={$this->port};dbname={$this->dbname}", $this->user,$this->password);
     }
     public function getALL(){
+        $sql = $this->conex->query("SELECT * FROM {$this->table}");
 
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getById($id){                                           
+        $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE idusuarios = :id");
+        $sql->bindParam(':id', $id);
+        $sql->execute();
+        return $sql->fetch(PDO::FETCH_ASSOC);
     }
 }
+
+
+
