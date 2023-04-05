@@ -9,7 +9,7 @@
     $usuarios = $usr->getALL();
 
     echo $twig->render('usuarios.html', [
-        'user' => $usuarios,
+      //  'user' => $usuarios,
    
         ]);
 
