@@ -1,26 +1,28 @@
+
 <?php
+
 
 
 require('func/sanitize_filename.php');
 
-
 if(isset($_FILES['imagem'])){
-
-    $arquivo = sanitize_filename($_FILES['arquivo']['name']);
     $img = $_FILES['imagem'];
     $diretorio = 'assets/imagem/';
-    move_uploaded_file($img['tmp_name'], $diretorio . $arquivo);
+
+    if($diretorio.$img['name'] != $diretorio){
+        $imagem = $diretorio.$img['name'];
+      }
+          else{ $imagem = $_POST['imagem_t'];}
 }
 
 
 
 
-//Realiza o INSERT DOS niveis de ensino
-function Insere_nivel($nome_nivel)
+//Realiza o altera DOS niveis de ensino
+function altera_nivel($nome_nivel)
 {
 require('pdo.inc.php');
-        $sql = $conex->prepare("INSERT INTO nivel_ensino (nome) VALUES
-                (:nome)");
+        $sql = $conex->prepare("UPDATE nivel_ensino SET nome_nivel = :nome  WHERE id = :id");
 
         $sql->bindParam(':nome', $nome_nivel);
 
@@ -31,15 +33,14 @@ require('pdo.inc.php');
 }
 
     //----------------------------------------------------------------------------------
-//Realiza o INSERT DOS cursos
-function Insere_curso($nome_curso, $nivel_ensino)
+//Realiza o altera DOS cursos
+function altera_curso($nome_curso, $nivel_ensino)
 {
 require('pdo.inc.php');
-        $sql = $conex->prepare("INSERT INTO cursos (nome, nivel_ensino_idNivel_ensino) VALUES
-                (:nome, :nivel)");
+        $sql = $conex->prepare("UPDATE curso SET nome_curso = :nome, nivel_ensino_idNivel_ensino = :idnivel  WHERE id = :id");
 
         $sql->bindParam(':nome', $nome_curso);
-        $sql->bindParam(':nivel', $nivel_ensino);
+        $sql->bindParam(':idnivel', $nivel_ensino);
 
         $sql->execute();
 
@@ -48,15 +49,13 @@ require('pdo.inc.php');
 }
 
     //----------------------------------------------------------------------------------
-//Realiza o INSERT Das turmas
-function Insere_turma($nome_turma, $idcurso)
+//Realiza o altera Das turmas
+function altera_turma($nome_turma, $idcurso)
 {
 require('pdo.inc.php');
-        $sql = $conex->prepare("INSERT INTO turmas (nome, cursos_idcursos) VALUES
-                (:nome, :nivel)");
-
+        $sql = $conex->prepare("UPDATE turma SET nome_turma = :nome, cursos_idcursos = :idcurso  WHERE id = :id");
         $sql->bindParam(':nome', $nome_turma);
-        $sql->bindParam(':nivel', $idcurso);
+        $sql->bindParam(':idcurso', $idcurso);
 
         $sql->execute();
 
@@ -66,15 +65,14 @@ require('pdo.inc.php');
 
     //----------------------------------------------------------------------------------
   
-//insere aluno
-function Insere_aluno($nome_aluno, $data_nasc,  $foto, $idturma)
+//altera aluno
+function altera_aluno($nome_aluno, $data_nasc,  $foto, $idturma)
 {
 require('pdo.inc.php');
        
 
-        //Realiza o INSERT DOS JOGADORES
-        $sql = $conex->prepare("INSERT INTO alunos (nome_aluno, data_nasc, foto, turmas_idturmas) VALUES
-                (:nome, :nasc, :foto,  :idturma)");
+        //Realiza o altera DOS JOGADORES
+        $sql = $PDO->prepare("UPDATE alunos SET nome_aluno = :nome, data_nasc = :nasc, foto = :foto, turmas_idturmas = :idturma  WHERE id = :id");
 
         $sql->bindParam(':nome', $nome_aluno);
         $sql->bindParam(':nasc', $data_nasc);
@@ -100,25 +98,26 @@ if(!isset($tipo)){
     
 
 if ($tipo == 'aluno'){
-    Insere_aluno( $_POST['nome'], $_POST['data_nasc'], $diretorio.$img['name'], $_POST['idturma']);
+    altera_aluno( $_POST['nome'], $_POST['data_nasc'], $diretorio.$img['name'], $_POST['idturma']);
     // Redireciona para a página inicial
     header('Location: index.php');
     die;
 }elseif($tipo == 'turma'){
-    Insere_turma($_POST['nome_turma'], $_POST['idcurso']);
+    altera_turma($_POST['nome_turma'], $_POST['idcurso']);
      // Redireciona para a página inicial
     header('Location: index.php');
     die;
 }
 elseif($tipo == 'curso'){
-    Insere_curso( $_POST['nome_curso'], $_POST['nivel_ensino']);
+    altera_curso( $_POST['nome_curso'], $_POST['nivel_ensino']);
     // Redireciona para a página inicial
     header('Location: index.php');
     die;
 }
 elseif($tipo == 'nivel'){
-    Insere_nivel( $_POST['nome_nivel']);
+    altera_nivel( $_POST['nome_nivel']);
     // Redireciona para a página inicial
     header('Location: index.php');
     die;
 };
+
