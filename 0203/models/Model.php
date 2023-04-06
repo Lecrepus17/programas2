@@ -18,7 +18,7 @@ class Model{
         $this->conex = new PDO("{$this->driver}:host={$this->host};port={$this->port};dbname={$this->dbname}", $this->user,$this->password);
     }
     public function getALL(){
-        $sql = $this->conex->query("SELECT * FROM {$this->table}");
+        $sql = $this->conex->query("SELECT * FROM {$this->table} WHERE ativo = 1");
 
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -27,6 +27,26 @@ class Model{
         $sql->bindParam(':id', $id);
         $sql->execute();
         return $sql->fetch(PDO::FETCH_ASSOC);
+    }
+    public function create($data){                                           
+    $sql = "INSERT INTO {$this->table}";
+        
+    foreach (array_Keys($data) as $field ){
+        $sql_fields[] = "{$field} = :{$field}";
+    }     
+
+    $sql_fields = implode(', ', $sql_fields);
+
+    $sql .= " SET {$sql_fields}";
+
+    $insert = $this->conex->prepare($sql);
+
+   // foreach ($data as $field => $value){
+   //     $insert->bindValue(":{$field}", $value);
+   // }
+    
+    $insert->execute($data);
+    return $insert->errorInfo();
     }
 }
 

@@ -22,7 +22,7 @@ programação  clonar repositorio na pasta htdocs
 
 rodar: composer install
 
- ou composer require
+ depois composer require twig/twig
 
 
 
@@ -274,7 +274,7 @@ http smtp pcp (numero de porta) ip   wifi
 
 abrir terminal baixar twing
 composer install
-
+composer require twig/twig
 -----------------------------------------------------------------------------
 
 email
@@ -311,3 +311,9 @@ Na página de detalhes da extensão, clique no botão "Copy Extension ID" para c
 Depois de copiar o ID da extensão, abra o arquivo "extensions.txt" em um editor de texto e cole o ID da extensão em uma nova linha. Certifique-se de que cada ID de extensão esteja em uma linha separada. Salve o arquivo após adicionar todas as extensões desejadas.
 
 Agora, você pode usar o arquivo "extensions.txt" para instalar as extensões em outra máquina, seguindo as instruções que eu forneci na minha resposta anterior.
+
+
+
+
+
+

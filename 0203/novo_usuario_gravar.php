@@ -1,5 +1,7 @@
 <?php
-    require('pdo.inc.php');
+    require('models/Model.php');
+    require('models/Usuario.php');
+    
     $nome = $_POST['nome'] ?? false;
     $email = $_POST['email'] ?? false;
     $user = $_POST['user'] ?? false;
@@ -13,14 +15,15 @@
 
     $pass = password_hash($pass, PASSWORD_BCRYPT);
 
-    $sql = $conex->prepare('INSERT INTO usuarios (nome, email, username, senha, admin, ativo) VALUES (:nome, :email, :user, :pass, :admin, 1)');
+    $usr = new Usuario();
+    $usr->create([
+        'username' => $user,
+        'senha' => $pass,
+        'admin' => $admin,
+        'ativo' => 1,
+        'email' => $email,
+    ]);
 
-    $sql->bindParam(':nome', $nome);
-    $sql->bindParam(':email', $email);
-    $sql->bindParam(':user', $user);
-    $sql->bindParam(':pass', $pass);
-    $sql->bindParam(':admin', $admin);
+    header('location:usuarios.php');
 
-    $sql->execute();
 
-    header('location:login.php');
