@@ -31,11 +31,7 @@ class Model{
     public function create($data){                                           
     $sql = "INSERT INTO {$this->table}";
         
-    foreach (array_Keys($data) as $field ){
-        $sql_fields[] = "{$field} = :{$field}";
-    }     
-
-    $sql_fields = implode(', ', $sql_fields);
+    $sql_fields = $this->sql_fields($data);
 
     $sql .= " SET {$sql_fields}";
 
@@ -48,7 +44,27 @@ class Model{
     $insert->execute($data);
     return $insert->errorInfo();
     }
+
+    public function update($data, $id){
+        $sql = "UPDATE INTO {$this->table}";
+
+        $sql_fields = $this->sql_fields($data);
+
+        $sql .= " SET {$sql_fields}";
+    }
+
+    private function sql_fields($data){
+        foreach (array_Keys($data) as $field ){
+            $sql_fields[] = "{$field} = :{$field}";
+        }     
+    
+        return implode(', ', $sql_fields);
+
+    }
+
 }
+
+
 
 
 
