@@ -30,11 +30,8 @@ class Model{
     }
     public function create($data){                                           
     $sql = "INSERT INTO {$this->table}";
-        
     $sql_fields = $this->sql_fields($data);
-
     $sql .= " SET {$sql_fields}";
-
     $insert = $this->conex->prepare($sql);
 
    // foreach ($data as $field => $value){
@@ -46,18 +43,20 @@ class Model{
     }
 
     public function update($data, $id){
-        $sql = "UPDATE INTO {$this->table}";
-
-        $sql_fields = $this->sql_fields($data);
-
-        $sql .= " SET {$sql_fields}";
+        unset($data['id']);
+        $sql = "UPDATE {$this->table}";
+        $sql .= ' SET ' . $this->sql_fields($data);
+        $sql .= " WHERE idusuarios = :id";
+        $data['id'] = $id;
+        $upd = $this->conex->prepare($sql);
+        $upd->bindParam(':id', $id);       
+        $upd->execute($data);
     }
 
     private function sql_fields($data){
         foreach (array_Keys($data) as $field ){
             $sql_fields[] = "{$field} = :{$field}";
         }     
-    
         return implode(', ', $sql_fields);
 
     }
