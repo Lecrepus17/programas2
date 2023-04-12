@@ -313,7 +313,23 @@ Depois de copiar o ID da extensão, abra o arquivo "extensions.txt" em um editor
 Agora, você pode usar o arquivo "extensions.txt" para instalar as extensões em outra máquina, seguindo as instruções que eu forneci na minha resposta anterior.
 
 
+----------------------------------------------------------------------------------------------------------------------
 
+
+
+
+node js
+/ctrl shift aspas
+/cd pasta que tá
+
+npm init -y
+npm install nodemon
+npm install expression
+package.json
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+npm run dev
 
 
 
