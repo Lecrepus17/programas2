@@ -3,3 +3,4 @@ ahmadawais.shades-of-purple
 mblode.twig-language-2
 DEVSENSE.phptools-vscode
 mrmlnc.vscode-apache
+CoenraadS.bracket-pair-colorizer-2
