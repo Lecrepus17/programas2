@@ -17,12 +17,17 @@ class Model{
         $this->table = $tbl;
         $this->conex = new PDO("{$this->driver}:host={$this->host};port={$this->port};dbname={$this->dbname}", $this->user,$this->password);
     }
-    public function getALL(){
-        $sql = $this->conex->query("SELECT * FROM {$this->table} WHERE ativo = 1");
-
+    public function getALL($where = false, $where_glue = 'AND'){
+        if ($where) {
+            $where_sql = $this->where_fields($where, $where_glue);
+            $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE {$where_sql}");
+            $sql->execute($where);
+        }   else{
+        $sql = $this->conex->query("SELECT * FROM {$this->table}");
+        }
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function getById($id){                                           
+    public function getById($id){                                        
         $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE idusuarios = :id");
         $sql->bindParam(':id', $id);
         $sql->execute();
@@ -53,17 +58,26 @@ class Model{
         $upd->execute($data);
     }
 
-    private function sql_fields($data){
+    private function map_fields($data){
         foreach (array_Keys($data) as $field ){
             $sql_fields[] = "{$field} = :{$field}";
         }     
+        return $sql_fields;
+
+    }
+    private function sql_fields($data){
+        
+        $sql_fields = $this->map_fields($data);
         return implode(', ', $sql_fields);
 
     }
+    private function where_fields($data, $glue = 'AND'){
+        $glue = $glue == 'OR' ? ' OR ' : ' AND '; 
+        $sql_fields = $this->map_fields($data);
+        return implode($glue, $sql_fields);
 
+    }
 }
-
-
 
 
 

@@ -14,6 +14,6 @@
         'email' => $email,
     ], $id);
 
-    header('location:usuarios.php');
+    header('location:/usuarios');
 
 

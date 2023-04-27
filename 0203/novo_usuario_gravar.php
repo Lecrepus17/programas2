@@ -9,7 +9,7 @@
     $admin = $_POST['admin'] ?? false;
 
     if(!$user or !$pass){
-        header('location:novo_usuario.php');
+        header('location:/novo_usuario');
         die;
     }
 
@@ -24,6 +24,6 @@
         'email' => $email,
     ]);
 
-    header('location:usuarios.php');
+    header('location:/usuarios');
 
 

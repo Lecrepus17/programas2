@@ -32,7 +32,7 @@
         $_SESSION['user'] = $user->nome;
 
 
-        header('location:boasvindas.php');
+        header('location:/boasvindas');
         die;
 
     } else {

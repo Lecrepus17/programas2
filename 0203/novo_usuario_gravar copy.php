@@ -7,7 +7,7 @@
     $admin = $_POST['admin'] ?? false;
 
     if(!$user or !$pass){
-        header('location:novo_usuario.php');
+        header('location:/novo_usuario');
         die;
     }
 
@@ -23,6 +23,6 @@
 
     $sql->execute();
 
-    header('location:login.php');
+    header('location:/login');
 
 

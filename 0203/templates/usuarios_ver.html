@@ -5,7 +5,7 @@
  
     <p>O máquinífico {{ info.username }}, com nome real {{ info.nome }}, com id {{ info.idusuarios }} e com email {{ info.email }}</p>
 
-    <form action="usuario_atualizar.php" method="POST">
+    <form action="/usuario_atualizar" method="POST">
         <div>
         Nome:
             <input type="text" name="nome" value="{{ info.nome }}">

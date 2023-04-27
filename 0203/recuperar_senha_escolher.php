@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ':token' => $token,
         ]);
 
-        header('location:login.php?erro=3');
+        header('location:/login.php?erro=3');
         die;
     }
     $msg = 'Conseguiu errar a senha né?';
@@ -42,6 +42,6 @@ if ($sql->rowCount() == 1){
     'msg' => $msg ?? false
 ]);
 }else{
-    header('location:login.php');
+    header('location:/login');
     die;
 }

@@ -11,7 +11,7 @@
         $sql = $conex->prepare("UPDATE usuarios SET ativo = 0 WHERE idusuarios = ?");
         $sql->execute([$id]);
         }
-      header('location:usuarios.php');
+      header('location:/usuarios');
         die;
     }
 
