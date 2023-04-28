@@ -10,22 +10,22 @@
 
 
 
-  <table border=1>
-  <thead>
+  <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
+  <thead class="bg-gray-100 dark:bg-gray-700">
     <tr>
-      <th>Nome</th>
-      <th>Admin</th>
-      <th>Ativo</th>
-      <th>Funções</th>
+      <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">Nome</th>
+      <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">Admin</th>
+      <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">Ativo</th>
+      <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">Funções</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
   {% for usr in user %}
-    <tr>
-      <td><a href="Usuario_ver/{{usr.idusuarios}}">{{ usr.username }}</a></td>
-      <td>{{ usr.admin }}</td>
-      <td>{{ usr.ativo }}</td>
-      <td><a href="usuario_apagar/{{ usr.idusuarios }}">apagar</a></td>
+    <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+      <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><a href="Usuario_ver/{{usr.idusuarios}}">{{ usr.username }}</a></td>
+      <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ usr.admin }}</td>
+      <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ usr.ativo }}</td>
+      <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><a href="usuario_apagar/{{ usr.idusuarios }}">apagar</a></td>
     </tr>
     
     {% endfor %}
@@ -33,4 +33,15 @@
   </tbody>
 </table> 
 
+
+
+
+
+
+
 {% endblock %}
+
+
+
+
+         
