@@ -1,6 +1,6 @@
 PKief.material-icon-theme
 ahmadawais.shades-of-purple
-mblode.twig-language-2
+rholdos.twig-language-support
 DEVSENSE.phptools-vscode
 mrmlnc.vscode-apache
 CoenraadS.bracket-pair-colorizer-2

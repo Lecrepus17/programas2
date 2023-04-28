@@ -17,6 +17,7 @@
 
     $usr = new Usuario();
     $usr->create([
+        'nome' => $nome,
         'username' => $user,
         'senha' => $pass,
         'admin' => $admin,
