@@ -1,0 +1,14 @@
+node js
+/ctrl shift aspas
+/cd pasta que tá
+
+npm init -y
+npm install nodemon expression moment dotenv body-parser
+npm install nodemon -D
+
+package.json
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+
+npm run dev

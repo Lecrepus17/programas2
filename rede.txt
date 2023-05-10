@@ -325,11 +325,12 @@ node js
 npm init -y
 npm install nodemon
 npm install expression
+npm install moment
+npm install body-parser
 package.json
   "scripts": {
     "dev": "nodemon index.js"
   },
 npm run dev
-
 
 
