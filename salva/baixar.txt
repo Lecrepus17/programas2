@@ -3,7 +3,7 @@ node js
 /cd pasta que tá
 
 npm init -y
-npm install nodemon expression moment dotenv body-parser
+npm install nodemon expression moment dotenv body-parser jsonwebtoken
 npm install nodemon -D
 
 package.json

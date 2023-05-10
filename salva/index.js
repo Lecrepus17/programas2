@@ -32,7 +32,6 @@ app.listen(port, () => {
 
 
 
-
 // lista todos os cursos
 app.get('/cursos', (req,res) => {
     res.json(cursos)
